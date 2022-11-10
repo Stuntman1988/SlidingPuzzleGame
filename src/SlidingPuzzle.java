@@ -29,7 +29,7 @@ public class SlidingPuzzle extends JFrame implements ActionListener {
     private JButton btn16;
     private JButton newGame;
     private JButton cheatBtn;
-    private final String blank = "";
+    private final String BLANK = "";
     private final Dimension buttonSize = new Dimension(40, 100);
 
     List<String> texts = Arrays.asList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15");
@@ -75,14 +75,16 @@ public class SlidingPuzzle extends JFrame implements ActionListener {
             buttons.get(i).setPreferredSize(buttonSize);
         }
         btn16.setBackground(groundPanel.getBackground());
-        btn16.setText("");
+        btn16.setFont(btn1.getFont());
+        btn16.setForeground(null);
+        btn16.setText(BLANK);
         btn16.setPreferredSize(buttonSize);
         if (!isSolvable()) {
             newGame();
         }
     }
 
-    private boolean isSolvable() { /*https://ssaurel.medium.com/developing-a-15-puzzle-game-of-fifteen-in-java-dfe1359cc6e3*/
+    private boolean isSolvable() {
         int countInversions = 0;
         int[] buttonsInt = new int[15];
         for (int i = 0; i < 15; i++) {
@@ -99,21 +101,12 @@ public class SlidingPuzzle extends JFrame implements ActionListener {
 
     private void cheatWay() {
         newGame();
-        btn1.setText("1");
-        btn2.setText("2");
-        btn3.setText("3");
-        btn4.setText("4");
-        btn5.setText("5");
-        btn6.setText("6");
-        btn7.setText("7");
-        btn8.setText("8");
-        btn9.setText("9");
-        btn10.setText("10");
-        btn11.setText("11");
-        btn12.setText("12");
-        btn13.setText("13");
-        btn14.setText("14");
-        btn15.setText("");
+        int counter = 0;
+        for (int i = 0; i < 16; i++) {
+            counter++;
+            buttons.get(i).setText(String.valueOf(counter));
+        }
+        btn15.setText(BLANK);
         btn16.setText("15");
         btn15.setBackground(groundPanel.getBackground());
         btn16.setBackground(Color.YELLOW);
@@ -125,7 +118,7 @@ public class SlidingPuzzle extends JFrame implements ActionListener {
                 btn7.getText().equals("7") && btn8.getText().equals("8") && btn9.getText().equals("9") &&
                 btn10.getText().equals("10") && btn11.getText().equals("11") && btn12.getText().equals("12") &&
                 btn13.getText().equals("13") && btn14.getText().equals("14") && btn15.getText().equals("15") &&
-                btn16.getText().equals("")) {
+                btn16.getText().equals(BLANK)) {
             btn16.setText("\u2714");
             btn16.setFont(new Font(btn16.getText(), Font.PLAIN, 50));
             btn16.setForeground(Color.green);
@@ -136,321 +129,321 @@ public class SlidingPuzzle extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btn1) {
-            if (btn2.getText().equals("")) {
+            if (btn2.getText().equals(BLANK)) {
                 btn2.setText(btn1.getText());
-                btn1.setText(blank);
+                btn1.setText(BLANK);
                 btn1.setBackground(groundPanel.getBackground());
                 btn2.setBackground(Color.yellow);
                 winGame();
-            } else if (btn5.getText().equals("")) {
+            } else if (btn5.getText().equals(BLANK)) {
                 btn5.setText(btn1.getText());
-                btn1.setText(blank);
+                btn1.setText(BLANK);
                 btn1.setBackground(groundPanel.getBackground());
                 btn5.setBackground(Color.yellow);
                 winGame();
             }
         } else if (e.getSource() == btn2) {
-            if (btn1.getText().equals("")) {
+            if (btn1.getText().equals(BLANK)) {
                 btn1.setText(btn2.getText());
-                btn2.setText(blank);
+                btn2.setText(BLANK);
                 btn2.setBackground(groundPanel.getBackground());
                 btn1.setBackground(Color.yellow);
                 winGame();
-            } else if (btn3.getText().equals("")) {
+            } else if (btn3.getText().equals(BLANK)) {
                 btn3.setText(btn2.getText());
-                btn2.setText(blank);
+                btn2.setText(BLANK);
                 btn2.setBackground(groundPanel.getBackground());
                 btn3.setBackground(Color.yellow);
                 winGame();
-            } else if (btn6.getText().equals("")) {
+            } else if (btn6.getText().equals(BLANK)) {
                 btn6.setText(btn2.getText());
-                btn2.setText(blank);
+                btn2.setText(BLANK);
                 btn2.setBackground(groundPanel.getBackground());
                 btn6.setBackground(Color.yellow);
                 winGame();
             }
         } else if (e.getSource() == btn3) {
-            if (btn2.getText().equals("")) {
+            if (btn2.getText().equals(BLANK)) {
                 btn2.setText(btn3.getText());
-                btn3.setText(blank);
+                btn3.setText(BLANK);
                 btn3.setBackground(groundPanel.getBackground());
                 btn2.setBackground(Color.yellow);
                 winGame();
-            } else if (btn4.getText().equals("")) {
+            } else if (btn4.getText().equals(BLANK)) {
                 btn4.setText(btn3.getText());
-                btn3.setText(blank);
+                btn3.setText(BLANK);
                 btn3.setBackground(groundPanel.getBackground());
                 btn4.setBackground(Color.yellow);
                 winGame();
-            } else if (btn7.getText().equals("")) {
+            } else if (btn7.getText().equals(BLANK)) {
                 btn7.setText(btn3.getText());
-                btn3.setText(blank);
+                btn3.setText(BLANK);
                 btn3.setBackground(groundPanel.getBackground());
                 btn7.setBackground(Color.yellow);
                 winGame();
             }
         } else if (e.getSource() == btn4) {
-            if (btn3.getText().equals("")) {
+            if (btn3.getText().equals(BLANK)) {
                 btn3.setText(btn4.getText());
-                btn4.setText(blank);
+                btn4.setText(BLANK);
                 btn4.setBackground(groundPanel.getBackground());
                 btn3.setBackground(Color.yellow);
                 winGame();
-            } else if (btn8.getText().equals("")) {
+            } else if (btn8.getText().equals(BLANK)) {
                 btn8.setText(btn4.getText());
-                btn4.setText(blank);
+                btn4.setText(BLANK);
                 btn4.setBackground(groundPanel.getBackground());
                 btn8.setBackground(Color.yellow);
                 winGame();
             }
         } else if (e.getSource() == btn5) {
-            if (btn1.getText().equals("")) {
+            if (btn1.getText().equals(BLANK)) {
                 btn1.setText(btn5.getText());
-                btn5.setText(blank);
+                btn5.setText(BLANK);
                 btn5.setBackground(groundPanel.getBackground());
                 btn1.setBackground(Color.yellow);
                 winGame();
-            } else if (btn6.getText().equals("")) {
+            } else if (btn6.getText().equals(BLANK)) {
                 btn6.setText(btn5.getText());
-                btn5.setText(blank);
+                btn5.setText(BLANK);
                 btn5.setBackground(groundPanel.getBackground());
                 btn6.setBackground(Color.yellow);
                 winGame();
-            } else if (btn9.getText().equals("")) {
+            } else if (btn9.getText().equals(BLANK)) {
                 btn9.setText(btn5.getText());
-                btn5.setText(blank);
+                btn5.setText(BLANK);
                 btn5.setBackground(groundPanel.getBackground());
                 btn9.setBackground(Color.yellow);
                 winGame();
             }
         } else if (e.getSource() == btn6) {
-            if (btn2.getText().equals("")) {
+            if (btn2.getText().equals(BLANK)) {
                 btn2.setText(btn6.getText());
-                btn6.setText(blank);
+                btn6.setText(BLANK);
                 btn6.setBackground(groundPanel.getBackground());
                 btn2.setBackground(Color.yellow);
                 winGame();
-            } else if (btn5.getText().equals("")) {
+            } else if (btn5.getText().equals(BLANK)) {
                 btn5.setText(btn6.getText());
-                btn6.setText(blank);
+                btn6.setText(BLANK);
                 btn6.setBackground(groundPanel.getBackground());
                 btn5.setBackground(Color.yellow);
                 winGame();
-            } else if (btn7.getText().equals("")) {
+            } else if (btn7.getText().equals(BLANK)) {
                 btn7.setText(btn6.getText());
-                btn6.setText(blank);
+                btn6.setText(BLANK);
                 btn6.setBackground(groundPanel.getBackground());
                 btn7.setBackground(Color.yellow);
                 winGame();
-            } else if (btn10.getText().equals("")) {
+            } else if (btn10.getText().equals(BLANK)) {
                 btn10.setText(btn6.getText());
-                btn6.setText(blank);
+                btn6.setText(BLANK);
                 btn6.setBackground(groundPanel.getBackground());
                 btn10.setBackground(Color.yellow);
                 winGame();
             }
         } else if (e.getSource() == btn7) {
-            if (btn3.getText().equals("")) {
+            if (btn3.getText().equals(BLANK)) {
                 btn3.setText(btn7.getText());
-                btn7.setText(blank);
+                btn7.setText(BLANK);
                 btn7.setBackground(groundPanel.getBackground());
                 btn3.setBackground(Color.yellow);
                 winGame();
-            } else if (btn6.getText().equals("")) {
+            } else if (btn6.getText().equals(BLANK)) {
                 btn6.setText(btn7.getText());
-                btn7.setText(blank);
+                btn7.setText(BLANK);
                 btn7.setBackground(groundPanel.getBackground());
                 btn6.setBackground(Color.yellow);
                 winGame();
-            } else if (btn8.getText().equals("")) {
+            } else if (btn8.getText().equals(BLANK)) {
                 btn8.setText(btn7.getText());
-                btn7.setText(blank);
+                btn7.setText(BLANK);
                 btn7.setBackground(groundPanel.getBackground());
                 btn8.setBackground(Color.yellow);
                 winGame();
-            } else if (btn11.getText().equals("")) {
+            } else if (btn11.getText().equals(BLANK)) {
                 btn11.setText(btn7.getText());
-                btn7.setText(blank);
+                btn7.setText(BLANK);
                 btn7.setBackground(groundPanel.getBackground());
                 btn11.setBackground(Color.yellow);
                 winGame();
             }
         } else if (e.getSource() == btn8) {
-            if (btn4.getText().equals("")) {
+            if (btn4.getText().equals(BLANK)) {
                 btn4.setText(btn8.getText());
-                btn8.setText(blank);
+                btn8.setText(BLANK);
                 btn8.setBackground(groundPanel.getBackground());
                 btn4.setBackground(Color.yellow);
                 winGame();
-            } else if (btn7.getText().equals("")) {
+            } else if (btn7.getText().equals(BLANK)) {
                 btn7.setText(btn8.getText());
-                btn8.setText(blank);
+                btn8.setText(BLANK);
                 btn8.setBackground(groundPanel.getBackground());
                 btn7.setBackground(Color.yellow);
                 winGame();
-            } else if (btn12.getText().equals("")) {
+            } else if (btn12.getText().equals(BLANK)) {
                 btn12.setText(btn8.getText());
-                btn8.setText(blank);
+                btn8.setText(BLANK);
                 btn8.setBackground(groundPanel.getBackground());
                 btn12.setBackground(Color.yellow);
                 winGame();
             }
         } else if (e.getSource() == btn9) {
-            if (btn5.getText().equals("")) {
+            if (btn5.getText().equals(BLANK)) {
                 btn5.setText(btn9.getText());
-                btn9.setText(blank);
+                btn9.setText(BLANK);
                 btn9.setBackground(groundPanel.getBackground());
                 btn5.setBackground(Color.yellow);
                 winGame();
-            } else if (btn10.getText().equals("")) {
+            } else if (btn10.getText().equals(BLANK)) {
                 btn10.setText(btn9.getText());
-                btn9.setText(blank);
+                btn9.setText(BLANK);
                 btn9.setBackground(groundPanel.getBackground());
                 btn10.setBackground(Color.yellow);
                 winGame();
-            } else if (btn13.getText().equals("")) {
+            } else if (btn13.getText().equals(BLANK)) {
                 btn13.setText(btn9.getText());
-                btn9.setText(blank);
+                btn9.setText(BLANK);
                 btn9.setBackground(groundPanel.getBackground());
                 btn13.setBackground(Color.yellow);
                 winGame();
             }
         } else if (e.getSource() == btn10) {
-            if (btn6.getText().equals("")) {
+            if (btn6.getText().equals(BLANK)) {
                 btn6.setText(btn10.getText());
-                btn10.setText(blank);
+                btn10.setText(BLANK);
                 btn10.setBackground(groundPanel.getBackground());
                 btn6.setBackground(Color.yellow);
                 winGame();
-            } else if (btn9.getText().equals("")) {
+            } else if (btn9.getText().equals(BLANK)) {
                 btn9.setText(btn10.getText());
-                btn10.setText(blank);
+                btn10.setText(BLANK);
                 btn10.setBackground(groundPanel.getBackground());
                 btn9.setBackground(Color.yellow);
                 winGame();
-            } else if (btn11.getText().equals("")) {
+            } else if (btn11.getText().equals(BLANK)) {
                 btn11.setText(btn10.getText());
-                btn10.setText(blank);
+                btn10.setText(BLANK);
                 btn10.setBackground(groundPanel.getBackground());
                 btn11.setBackground(Color.yellow);
                 winGame();
-            } else if (btn14.getText().equals("")) {
+            } else if (btn14.getText().equals(BLANK)) {
                 btn14.setText(btn10.getText());
-                btn10.setText(blank);
+                btn10.setText(BLANK);
                 btn10.setBackground(groundPanel.getBackground());
                 btn14.setBackground(Color.yellow);
                 winGame();
             }
         } else if (e.getSource() == btn11) {
-            if (btn7.getText().equals("")) {
+            if (btn7.getText().equals(BLANK)) {
                 btn7.setText(btn11.getText());
-                btn11.setText(blank);
+                btn11.setText(BLANK);
                 btn11.setBackground(groundPanel.getBackground());
                 btn7.setBackground(Color.yellow);
                 winGame();
-            } else if (btn10.getText().equals("")) {
+            } else if (btn10.getText().equals(BLANK)) {
                 btn10.setText(btn11.getText());
-                btn11.setText(blank);
+                btn11.setText(BLANK);
                 btn11.setBackground(groundPanel.getBackground());
                 btn10.setBackground(Color.yellow);
                 winGame();
-            } else if (btn12.getText().equals("")) {
+            } else if (btn12.getText().equals(BLANK)) {
                 btn12.setText(btn11.getText());
-                btn11.setText(blank);
+                btn11.setText(BLANK);
                 btn11.setBackground(groundPanel.getBackground());
                 btn12.setBackground(Color.yellow);
                 winGame();
-            } else if (btn15.getText().equals("")) {
+            } else if (btn15.getText().equals(BLANK)) {
                 btn15.setText(btn11.getText());
-                btn11.setText(blank);
+                btn11.setText(BLANK);
                 btn11.setBackground(groundPanel.getBackground());
                 btn15.setBackground(Color.yellow);
                 winGame();
             }
         } else if (e.getSource() == btn12) {
-            if (btn8.getText().equals("")) {
+            if (btn8.getText().equals(BLANK)) {
                 btn8.setText(btn12.getText());
-                btn12.setText(blank);
+                btn12.setText(BLANK);
                 btn12.setBackground(groundPanel.getBackground());
                 btn8.setBackground(Color.yellow);
                 winGame();
-            } else if (btn11.getText().equals("")) {
+            } else if (btn11.getText().equals(BLANK)) {
                 btn11.setText(btn12.getText());
-                btn12.setText(blank);
+                btn12.setText(BLANK);
                 btn12.setBackground(groundPanel.getBackground());
                 btn11.setBackground(Color.yellow);
                 winGame();
-            } else if (btn16.getText().equals("")) {
+            } else if (btn16.getText().equals(BLANK)) {
                 btn16.setText(btn12.getText());
-                btn12.setText(blank);
+                btn12.setText(BLANK);
                 btn12.setBackground(groundPanel.getBackground());
                 btn16.setBackground(Color.yellow);
                 winGame();
             }
         } else if (e.getSource() == btn13) {
-            if (btn9.getText().equals("")) {
+            if (btn9.getText().equals(BLANK)) {
                 btn9.setText(btn13.getText());
-                btn13.setText(blank);
+                btn13.setText(BLANK);
                 btn13.setBackground(groundPanel.getBackground());
                 btn9.setBackground(Color.yellow);
                 winGame();
-            } else if (btn14.getText().equals("")) {
+            } else if (btn14.getText().equals(BLANK)) {
                 btn14.setText(btn13.getText());
-                btn13.setText(blank);
+                btn13.setText(BLANK);
                 btn13.setBackground(groundPanel.getBackground());
                 btn14.setBackground(Color.yellow);
                 winGame();
             }
         } else if (e.getSource() == btn14) {
-            if (btn10.getText().equals("")) {
+            if (btn10.getText().equals(BLANK)) {
                 btn10.setText(btn14.getText());
-                btn14.setText(blank);
+                btn14.setText(BLANK);
                 btn14.setBackground(groundPanel.getBackground());
                 btn10.setBackground(Color.yellow);
                 winGame();
-            } else if (btn13.getText().equals("")) {
+            } else if (btn13.getText().equals(BLANK)) {
                 btn13.setText(btn14.getText());
-                btn14.setText(blank);
+                btn14.setText(BLANK);
                 btn14.setBackground(groundPanel.getBackground());
                 btn13.setBackground(Color.yellow);
                 winGame();
-            } else if (btn15.getText().equals("")) {
+            } else if (btn15.getText().equals(BLANK)) {
                 btn15.setText(btn14.getText());
-                btn14.setText(blank);
+                btn14.setText(BLANK);
                 btn14.setBackground(groundPanel.getBackground());
                 btn15.setBackground(Color.yellow);
                 winGame();
             }
         } else if (e.getSource() == btn15) {
-            if (btn11.getText().equals("")) {
+            if (btn11.getText().equals(BLANK)) {
                 btn11.setText(btn15.getText());
-                btn15.setText(blank);
+                btn15.setText(BLANK);
                 btn15.setBackground(groundPanel.getBackground());
                 btn11.setBackground(Color.yellow);
                 winGame();
-            } else if (btn14.getText().equals("")) {
+            } else if (btn14.getText().equals(BLANK)) {
                 btn14.setText(btn15.getText());
-                btn15.setText(blank);
+                btn15.setText(BLANK);
                 btn15.setBackground(groundPanel.getBackground());
                 btn14.setBackground(Color.yellow);
                 winGame();
-            } else if (btn16.getText().equals("")) {
+            } else if (btn16.getText().equals(BLANK)) {
                 btn16.setText(btn15.getText());
-                btn15.setText(blank);
+                btn15.setText(BLANK);
                 btn15.setBackground(groundPanel.getBackground());
                 btn16.setBackground(Color.yellow);
                 winGame();
             }
         } else if (e.getSource() == btn16) {
-            if (btn12.getText().equals("")) {
+            if (btn12.getText().equals(BLANK)) {
                 btn12.setText(btn16.getText());
-                btn16.setText(blank);
+                btn16.setText(BLANK);
                 btn16.setBackground(groundPanel.getBackground());
                 btn12.setBackground(Color.yellow);
                 winGame();
-            } else if (btn15.getText().equals("")) {
+            } else if (btn15.getText().equals(BLANK)) {
                 btn15.setText(btn16.getText());
-                btn16.setText(blank);
+                btn16.setText(BLANK);
                 btn16.setBackground(groundPanel.getBackground());
                 btn15.setBackground(Color.yellow);
                 winGame();
